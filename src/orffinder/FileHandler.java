@@ -76,10 +76,10 @@ public class FileHandler {
             fileContent.add(tempLines);
 
         } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Het Geselecteerde bestand is niet gevonden", "Error Message",
+            JOptionPane.showMessageDialog(null, "The selected file could not be located!", "Error Message",
                     JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Er heeft zich een input/output error voorgedaan", "Error Message",
+            JOptionPane.showMessageDialog(null, "There occured and input/output error!", "Error Message",
                     JOptionPane.ERROR_MESSAGE);
 
         }

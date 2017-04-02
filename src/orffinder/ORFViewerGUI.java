@@ -1,6 +1,7 @@
 package orffinder;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 
@@ -59,6 +60,10 @@ public class ORFViewerGUI extends javax.swing.JDialog {
         txtAaSequence = new javax.swing.JTextField();
         btnVisualizeSeq = new javax.swing.JButton();
         btnPickHeader = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -84,6 +89,7 @@ public class ORFViewerGUI extends javax.swing.JDialog {
 
         jScrollPane2.setViewportView(jScrollPane1);
 
+        txtORFSequence.setEditable(false);
         jScrollPane6.setViewportView(txtORFSequence);
 
         drpReadingFrame.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "-1", "-2", "-3" }));
@@ -108,6 +114,7 @@ public class ORFViewerGUI extends javax.swing.JDialog {
 
         btnExport.setText("Export project");
 
+        txtAaSequence.setEditable(false);
         jScrollPane5.setViewportView(txtAaSequence);
 
         btnVisualizeSeq.setText("Visualize seq");
@@ -124,6 +131,14 @@ public class ORFViewerGUI extends javax.swing.JDialog {
             }
         });
 
+        jLabel4.setText("Select a reading frame:");
+
+        jLabel5.setText("Select an open reading frame:");
+
+        jTextField1.setText("jTextField1");
+
+        jLabel6.setText("Project name:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,67 +147,74 @@ public class ORFViewerGUI extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jScrollPane5))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel2))
-                                .addGap(6, 6, 6)))
+                                .addGap(6, 6, 6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jScrollPane2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnFileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnImport)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 490, Short.MAX_VALUE)))
-                                .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jScrollPane2)
+                                    .addComponent(jTextField1))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnFileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(43, 43, 43))
+                            .addComponent(jScrollPane5)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btnPickHeader, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(drpHeader, javax.swing.GroupLayout.Alignment.LEADING, 0, 225, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(drpReadingFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(drpReadingFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
-                        .addComponent(drpORF, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnVisualizeORF)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnVisualizeSeq)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(drpORF, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnVisualizeORF)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnVisualizeSeq))
+                            .addComponent(jLabel5))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btnFileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnImport)
-                            .addComponent(btnExport))))
-                .addGap(0, 84, Short.MAX_VALUE)
+                                .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jLabel1)))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(btnImport)
+                    .addComponent(btnExport))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 57, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -205,8 +227,15 @@ public class ORFViewerGUI extends javax.swing.JDialog {
                         .addGap(21, 21, 21)
                         .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnPickHeader)
-                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnPickHeader)
+                        .addGap(5, 5, 5))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(drpORF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(drpReadingFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,27 +261,37 @@ public class ORFViewerGUI extends javax.swing.JDialog {
 
     private void btnVisualizeORFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizeORFActionPerformed
         // TODO add your handling code here:
-        txtORFSequence.setText(o.getORFs().get(drpORF.getSelectedIndex()));
-        
-        String aminoAcid = "";
-        String aminoSeq = "";
-        String codon = "";
-        String seq = txtORFSequence.getText();
-        SequenceTranscriptor translate = new SequenceTranscriptor();
-        
-        for (int i=0; i< seq.length() -2; i+=3){
-            codon = seq.substring(i, i+3);
-            aminoAcid = translate.getAminoAcidSequence(codon);
-            System.out.println(aminoAcid);
-            aminoSeq += aminoAcid;
+        try{
+            txtORFSequence.setText(o.getORFs().get(drpORF.getSelectedIndex()));
+
+            String aminoAcid = "";
+            String aminoSeq = "";
+            String codon = "";
+            String seq = txtORFSequence.getText();
+            SequenceTranscriptor translate = new SequenceTranscriptor();
+
+            for (int i=0; i< seq.length() -2; i+=3){
+                codon = seq.substring(i, i+3);
+                aminoAcid = translate.getAminoAcidSequence(codon);
+                System.out.println(aminoAcid);
+                aminoSeq += aminoAcid;
+            }
+
+            txtAaSequence.setText(aminoSeq);
+        }catch(ArrayIndexOutOfBoundsException ex){
+             JOptionPane.showMessageDialog(null, "First pick a header!", "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
         }
-        
-        txtAaSequence.setText(aminoSeq);
         
     }//GEN-LAST:event_btnVisualizeORFActionPerformed
 
     private void btnVisualizeSeqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizeSeqActionPerformed
-        // TODO add your handling code here:
+        try {
+            txtORFSequence.setText(o.getSequenceList().get(drpORF.getSelectedIndex()));
+        }catch(ArrayIndexOutOfBoundsException ex){
+             JOptionPane.showMessageDialog(null, "First pick a header!", "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnVisualizeSeqActionPerformed
 
     private void btnFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileChooserActionPerformed
@@ -262,10 +301,15 @@ public class ORFViewerGUI extends javax.swing.JDialog {
 
     private void btnPickHeaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPickHeaderActionPerformed
         // TODO add your handling code here:
-        drpORF.removeAllItems();
-        o.visualizeORF(drpReadingFrame.getSelectedIndex()+1, drpHeader.getSelectedIndex());
-        for(int i = 0; i < o.getORFs().size(); i++){
-            drpORF.addItem(Integer.toString(i+1));
+        try{
+            drpORF.removeAllItems();
+            o.visualizeORF(drpReadingFrame.getSelectedIndex()+1, drpHeader.getSelectedIndex());
+            for(int i = 0; i < o.getORFs().size(); i++){
+                drpORF.addItem(Integer.toString(i+1));
+            }
+        }catch(ArrayIndexOutOfBoundsException ex){
+             JOptionPane.showMessageDialog(null, "First select a header from the dropdown menu!", "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnPickHeaderActionPerformed
 
@@ -293,10 +337,15 @@ public class ORFViewerGUI extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtAaSequence;
     private javax.swing.JTextField txtFilePath;
     private javax.swing.JTextField txtORFSequence;
