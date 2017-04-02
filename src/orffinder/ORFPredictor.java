@@ -61,13 +61,18 @@ public class ORFPredictor {
         //a temporal variable is initiated, this is needed for building the ORFs
         char[] temporalRF;
         
-        
+        //if the selected reading frame is smaller or equal to three, the reading frame is forward, and a forward strand is given.
         if(selectedRF <= 3){
+            //the desired sequence is added to the temporalstring and converted to a char array
             temporalRF = sequenceList.get(selectedHeader -1).toCharArray();
+            //the sequence is then given to a method which will in turn build the ORFs, the sequence is given, it also takes the selected reading frame
             ORFBuilder(temporalRF, selectedRF);
                  }
+        //if the selected reading frame is not smaller or equal to three, the reading frame is reverse, therefor a complementary strand must be given
         else {
+            //the desired sequence is added to the temporal string and converted to a char array
             temporalRF = sequenceList.get(selectedHeader -1).toCharArray();
+            //before executing the ORFbuilder, the strand is first made complementary with another method.
             ORFBuilder(makeComplementary(temporalRF).toCharArray(), selectedRF);
             
         }
