@@ -1,3 +1,5 @@
+package orffinder;
+
 
 
 /*
@@ -188,7 +190,7 @@ public class ORFViewerGUI extends javax.swing.JDialog {
 
     private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
         // TODO add your handling code here:
-        appendToPane(EditorPane, "feest")
+        
     }//GEN-LAST:event_btnOpenActionPerformed
 
     private void btnVisualizeORFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizeORFActionPerformed
