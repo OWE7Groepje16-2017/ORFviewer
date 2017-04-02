@@ -1,5 +1,7 @@
 package orffinder;
 
+import java.util.ArrayList;
+
 
 
 /*
@@ -18,6 +20,11 @@ public class ORFViewerGUI extends javax.swing.JDialog {
     /**
      * Creates new form ORFViewerGUI
      */
+    
+    
+    FileHandler f = new FileHandler();
+    ORFPredictor o = new ORFPredictor();
+    
     public ORFViewerGUI(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -51,6 +58,7 @@ public class ORFViewerGUI extends javax.swing.JDialog {
         jScrollPane5 = new javax.swing.JScrollPane();
         txtAaSequence = new javax.swing.JTextField();
         btnVisualizeSeq = new javax.swing.JButton();
+        btnPickHeader = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -64,6 +72,11 @@ public class ORFViewerGUI extends javax.swing.JDialog {
 
         btnFileChooser.setText("Browse");
         btnFileChooser.setActionCommand("Visualize");
+        btnFileChooser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFileChooserActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("File Path:");
 
@@ -73,11 +86,7 @@ public class ORFViewerGUI extends javax.swing.JDialog {
 
         jScrollPane6.setViewportView(txtORFSequence);
 
-        drpHeader.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        drpReadingFrame.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        drpORF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        drpReadingFrame.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "-1", "-2", "-3" }));
 
         btnVisualizeORF.setText("Visualize ORF");
         btnVisualizeORF.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +106,18 @@ public class ORFViewerGUI extends javax.swing.JDialog {
         jScrollPane5.setViewportView(txtAaSequence);
 
         btnVisualizeSeq.setText("Visualize seq");
+        btnVisualizeSeq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizeSeqActionPerformed(evt);
+            }
+        });
+
+        btnPickHeader.setText("pick header");
+        btnPickHeader.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPickHeaderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,17 +153,21 @@ public class ORFViewerGUI extends javax.swing.JDialog {
                                 .addGap(6, 6, 6)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnFileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jScrollPane2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnFileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnImport)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
                                 .addGap(18, 18, 18)
-                                .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnImport)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnOpen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnPickHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -152,18 +177,19 @@ public class ORFViewerGUI extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnFileChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnImport)
-                            .addComponent(btnExport))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnImport)
+                                .addComponent(btnExport))
+                            .addComponent(btnPickHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
@@ -190,12 +216,37 @@ public class ORFViewerGUI extends javax.swing.JDialog {
 
     private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
         // TODO add your handling code here:
-        
+        drpHeader.removeAll();
+        ArrayList<String> fileContents = new ArrayList();
+        fileContents = f.readFile(txtFilePath.getText());
+        o.predictORF(fileContents);
+        for(String s : o.getHeaderList()){
+            drpHeader.addItem(s);
+        }
     }//GEN-LAST:event_btnOpenActionPerformed
 
     private void btnVisualizeORFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizeORFActionPerformed
         // TODO add your handling code here:
+        txtORFSequence.setText(o.getORFs().get(drpORF.getSelectedIndex()));
     }//GEN-LAST:event_btnVisualizeORFActionPerformed
+
+    private void btnVisualizeSeqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizeSeqActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVisualizeSeqActionPerformed
+
+    private void btnFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileChooserActionPerformed
+        // TODO add your handling code here:
+        txtFilePath.setText(f.openFile());
+    }//GEN-LAST:event_btnFileChooserActionPerformed
+
+    private void btnPickHeaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPickHeaderActionPerformed
+        // TODO add your handling code here:
+        drpORF.removeAll();
+        o.visualizeORF(drpReadingFrame.getSelectedIndex()+1, drpHeader.getSelectedIndex());
+        for(int i = 0; i < o.getORFs().size(); i++){
+            drpORF.addItem(Integer.toString(i+1));
+        }
+    }//GEN-LAST:event_btnPickHeaderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,6 +258,7 @@ public class ORFViewerGUI extends javax.swing.JDialog {
     private javax.swing.JButton btnFileChooser;
     private javax.swing.JButton btnImport;
     private javax.swing.JButton btnOpen;
+    private javax.swing.JButton btnPickHeader;
     private javax.swing.JButton btnVisualizeSeq;
     private javax.swing.JComboBox<String> drpHeader;
     private javax.swing.JComboBox<String> drpORF;
@@ -216,8 +268,6 @@ public class ORFViewerGUI extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextField txtAaSequence;
