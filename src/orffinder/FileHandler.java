@@ -23,7 +23,7 @@ public class FileHandler {
      //Start variable declaration
     private String filePath;
     private BufferedReader inFile1;  
-    private String fileContent;
+    private ArrayList<String> fileContent = new ArrayList<>();
     //End variable declaration
     /**
      *
@@ -51,18 +51,29 @@ public class FileHandler {
      * Catches FileNotFoundException and IOException.
      * An exception catch will give the user a popup with a notification what went wrong.
      */
-    public String readFile(String filePath) {
-        StringBuilder stringBuilder = new StringBuilder();
+    public ArrayList<String> readFile(String filePath) {
+       
 
         String line;
-        
+        String tempLines = "";
         try {
             inFile1 = new BufferedReader(new FileReader(filePath));
 
             while ((line = inFile1.readLine()) != null) {
-               stringBuilder.append(line);
+               if (line.contains(">")){
+                   if( tempLines != ""){
+                       fileContent.add(tempLines);
+                       tempLines = "";
+                   }
+                   fileContent.add(line);
+                   
+               } else{
+                   tempLines += line;
+                   
+               }
 
             }
+            fileContent.add(tempLines);
 
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Het Geselecteerde bestand is niet gevonden", "Error Message",
@@ -72,7 +83,7 @@ public class FileHandler {
                     JOptionPane.ERROR_MESSAGE);
 
         }
-        fileContent = stringBuilder.toString();
+        
         return fileContent;
     }
 
