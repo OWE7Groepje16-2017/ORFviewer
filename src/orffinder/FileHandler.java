@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author Jasper de Meijer
  */
-public class FileHandeler {
+public class FileHandler {
      //Start variable declaration
     private String filePath;
     private BufferedReader inFile1;  
