@@ -19,8 +19,8 @@ public class SequenceTranscriptor {
     public SequenceTranscriptor(){
         initializeTable();
     }
-    private String getAminoAcidSequence(String codon){
-        String uCodon = codon.toLowerCase();
+    public String getAminoAcidSequence(String codon){
+        String uCodon = codon.toUpperCase();
         String AA = (String) table.get(uCodon);
         return AA;
     }
@@ -37,11 +37,11 @@ public class SequenceTranscriptor {
   table.put ("TCG", "S");
   table.put ("TAT", "Y");
   table.put ("TAC", "Y");
-    //            TAA end
-    //            TAG end
+  table.put ("TAA", "*");
+  table.put ("TAG", "*");
   table.put ("TGT", "C");
   table.put ("TGC", "C");
-    //            TGA end
+  table.put ("TGA", "*");
   table.put ("TGG", "W");
   table.put ("CTT", "L");
   table.put ("CTC", "L");
