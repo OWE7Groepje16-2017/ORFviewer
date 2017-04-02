@@ -100,6 +100,11 @@ public class ORFViewerGUI extends javax.swing.JDialog {
         jLabel3.setText("AA:");
 
         btnImport.setText("Import project");
+        btnImport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportActionPerformed(evt);
+            }
+        });
 
         btnExport.setText("Export project");
 
@@ -247,6 +252,12 @@ public class ORFViewerGUI extends javax.swing.JDialog {
             drpORF.addItem(Integer.toString(i+1));
         }
     }//GEN-LAST:event_btnPickHeaderActionPerformed
+
+    private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
+        // TODO add your handling code here:
+        DataImporter test = new DataImporter();
+        test.importDatabase();
+    }//GEN-LAST:event_btnImportActionPerformed
 
     /**
      * @param args the command line arguments
