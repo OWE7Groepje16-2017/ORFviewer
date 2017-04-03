@@ -10,8 +10,10 @@ import java.util.ArrayList;
 
 
 /**
- *
- * @author jdm
+ * 
+ * @author Tim van de Kerkhof
+ * This class imports a selection of sequences and headers from the database,
+ * using a selected projectName as identifier. returns an arrayList
  */
 public class DataImporter {
     
@@ -19,9 +21,9 @@ public class DataImporter {
     private ArrayList<String> importedData = new ArrayList();
 
     /**
-     *
-     * @return
-     * @throws Exception
+     * make a connectionstring for connection to the database
+     * @return returns a connection to be used to connect to the database
+     * @throws Exception: catches any error caused by mysql syntax
      */
     public static Connection getConnection() throws Exception {
         if (connection == null) {
@@ -32,9 +34,9 @@ public class DataImporter {
     }
 
     /**
-     *
+     * imports headers & sequences from database using projectname
      * @param projectName
-     * @return
+     * @return returns an ArrayList with the imported headers & sequences
      */
     public ArrayList<String> importData(String projectName){
         
