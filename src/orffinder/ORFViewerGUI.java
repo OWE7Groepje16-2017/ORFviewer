@@ -5,16 +5,11 @@ import javax.swing.JOptionPane;
 
 
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 
 /**
  *
- * @author Jasper de Meijer
+ * @author Jasper de Meijer & Tim van de Kerkhof
  */
 public class ORFViewerGUI extends javax.swing.JDialog {
 
@@ -28,6 +23,11 @@ public class ORFViewerGUI extends javax.swing.JDialog {
     DataExporter e = new DataExporter();
     DataImporter i = new DataImporter();
     
+    /**
+     *
+     * @param parent
+     * @param modal
+     */
     public ORFViewerGUI(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
