@@ -10,22 +10,41 @@ import java.util.HashMap;
 /**
  *
  * @author Jasper de Meijer
+ * When the class is called upon the constructor will initialize a HashMap 
+ * containing an amino acid codon table. To translate a codon to an amino acid
+ * use the getAminoAcidSequence(codon) function.
  */
 public class SequenceTranscriptor {
+    //start of variable declaration
     HashMap table = new HashMap();
     String nucleotideSequence;
     String aminoSequence;
+    //end of variable declaration
     
+    /**
+     *Constructor: will intialize the Hashmap containing AA codon table.
+     */
     public SequenceTranscriptor(){
         initializeTable();
     }
+
+    /**
+     *
+     * @param codon, a three letter string which needs to be translated to an AA
+     * @return String containing the AA.
+     * Calls upon the the initialized hashmap(table). Uses the 3 letter codon as a key
+     * and returns the corresponding value (the AA).
+     */
     public String getAminoAcidSequence(String codon){
         String uCodon = codon.toUpperCase();
         String AA = (String) table.get(uCodon);
         return AA;
     }
     
-    protected void initializeTable ()
+    /**
+     *Initializes the hashmap containing the codons as keys and the AA's as values
+     */
+    private void initializeTable ()
 {
   table.put ("TTT", "F");
   table.put ("TTC", "F");
