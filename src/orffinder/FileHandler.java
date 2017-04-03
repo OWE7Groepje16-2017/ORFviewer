@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package orffinder;
 
 import java.io.BufferedReader;
@@ -18,6 +14,9 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Jasper de Meijer
+ * Functionality: The class FileHandler makes it possible to select
+ * a file from the filesystem of the user, open and read the file and return all
+ * the lines of the file. 
  */
 public class FileHandler {
      //Start variable declaration
@@ -45,9 +44,8 @@ public class FileHandler {
     /**
      *
      * @param filePath the path of selected path
-     * @return Every line of the given file except for the header
-     * Processes the file and returns every line except for the header.
-     * The header will be saved for later use.
+     * @return Every line of the given file.
+     * Processes the file and returns every line.
      * Catches FileNotFoundException and IOException.
      * An exception catch will give the user a popup with a notification what went wrong.
      */
@@ -87,15 +85,7 @@ public class FileHandler {
         return fileContent;
     }
 
-    /**
-     *
-     * @param interactionShortPhrase 
-     * @param geneList
-     * Itterates over the original gene list, if a gene contains the given interaction short phrase
-     * it will be stored in a Hashmap
-     * Creates a HashMap with a counter as key (can be used as index of the original genelist)
-     * Gene ID1 of the corresponding gene is used as value. 
-     */
+   
     
 
     
