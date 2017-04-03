@@ -40,10 +40,19 @@ Implementatie van het ontwerp:
       Ipv een functie voor het vertalen wordt er een getter gebruikt om values uit de codon hashmap te halen.
 
     DataExporter:
+    
+      Wijkt af van het ontwerp.
+      toegevoegd: methode getConnection om connectie te maken aan de database
+      verwijderd: exportFile, exportBlast. deze functies zijn niet langer relevant voor de applicatie
 
     DataImporter:
+      Wijkt af van het ontwerp:
+      toegevoegd: methode getConnection om connectie te maken aan de database.
 
     ORFPredictor:
+      Wijkt af van het ontwerp:
+      toegevoegd: getters & setters voor de private fields, de functie ORFbuilder en de functie makeComplementary
+      visualizeImport is meegenomen met de functie predictORF
 
 
 
