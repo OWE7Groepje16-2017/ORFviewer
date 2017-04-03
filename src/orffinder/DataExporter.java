@@ -16,6 +16,11 @@ public class DataExporter {
 
     static private Connection connection = null;
 
+    /**
+     *
+     * @return
+     * @throws Exception
+     */
     public static Connection
             getConnection() throws Exception {
         if (connection == null) {
@@ -25,6 +30,14 @@ public class DataExporter {
         return connection;
     }
 
+    /**
+     *
+     * @param seqID
+     * @param originNseq
+     * @param projectName
+     * @param Organism
+     * @param header
+     */
     public void exportSequence(int seqID, String originNseq, String projectName,
             String Organism, String header) {
 
@@ -45,6 +58,13 @@ public class DataExporter {
         }
     }
 
+    /**
+     *
+     * @param ORFID
+     * @param ORFNSeq
+     * @param RFNumber
+     * @param seqID
+     */
     public void exportORF(int ORFID, String ORFNSeq, String RFNumber, int seqID) {
         
 
@@ -64,6 +84,10 @@ public class DataExporter {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int getSeqID() {
         int maxID = 0;
         try {
@@ -82,6 +106,10 @@ public class DataExporter {
         return maxID;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getORFID() {
         int maxID = 0;
         try {

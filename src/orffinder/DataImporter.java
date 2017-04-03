@@ -18,6 +18,11 @@ public class DataImporter {
     static private Connection connection = null;
     private ArrayList<String> importedData = new ArrayList();
 
+    /**
+     *
+     * @return
+     * @throws Exception
+     */
     public static Connection getConnection() throws Exception {
         if (connection == null) {
             Class.forName("com.mysql.jdbc.Driver");
@@ -25,6 +30,12 @@ public class DataImporter {
         }
         return connection;
     }
+
+    /**
+     *
+     * @param projectName
+     * @return
+     */
     public ArrayList<String> importData(String projectName){
         
         try {
