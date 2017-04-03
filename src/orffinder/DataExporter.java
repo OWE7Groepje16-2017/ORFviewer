@@ -6,6 +6,7 @@
 package orffinder;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,7 +40,8 @@ public class DataExporter {
             stmtSeq.setString(5, header);
             stmtSeq.executeUpdate();
         } catch (Exception e) {
-            System.out.println("something went wrong while exporting sequence");
+            JOptionPane.showMessageDialog(null, "Something went wrong while exporting the sequence", "Error Message",
+                    JOptionPane.ERROR_MESSAGE);;
         }
     }
 
@@ -57,8 +59,8 @@ public class DataExporter {
             stmtORF.setInt(4, seqID);
             stmtORF.executeUpdate();
         } catch (Exception e) {
-            System.out.println("something went while exporting ORF");
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Something went wrong while exporting ORF's", "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -73,8 +75,8 @@ public class DataExporter {
                 maxID = rs.getInt("maxSeqID");
             }
         } catch (Exception e) {
-            System.out.println("something went wrong while fetching maxseq");
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Something went wrong while fetching maxSeq", "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
         }
 
         return maxID;
@@ -91,9 +93,11 @@ public class DataExporter {
                 maxID = rs.getInt("maxORFID");
             }
         } catch (Exception e) {
-            System.out.println("something went wrong while fetching maxORF");
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Something went wrong while fetching maxORF", "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
         }
+             
+        
 
         return maxID;
     }

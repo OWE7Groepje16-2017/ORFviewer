@@ -142,8 +142,6 @@ public class ORFViewerGUI extends javax.swing.JDialog {
 
         jLabel5.setText("Select an open reading frame:");
 
-        txtProjectName.setText("jTextField1");
-
         jLabel6.setText("Project name:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -331,10 +329,15 @@ public class ORFViewerGUI extends javax.swing.JDialog {
 
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
         // TODO add your handling code here:
-        e.exportSequence(e.getSeqID()+1, o.getSequenceList().get(drpHeader.getSelectedIndex()), 
-                txtProjectName.getText(), "Not_Implemented", drpHeader.getSelectedItem().toString());
-        for(String s : o.getORFs()){
-            e.exportORF(e.getORFID()+1, s, drpReadingFrame.getSelectedItem().toString(), e.getSeqID());
+        try {
+            e.exportSequence(e.getSeqID()+1, o.getSequenceList().get(drpHeader.getSelectedIndex()), 
+                    txtProjectName.getText(), "Not_Implemented", drpHeader.getSelectedItem().toString());
+            for(String s : o.getORFs()){
+                e.exportORF(e.getORFID()+1, s, drpReadingFrame.getSelectedItem().toString(), e.getSeqID());
+            }
+        } catch(ArrayIndexOutOfBoundsException ex){
+             JOptionPane.showMessageDialog(null, "There is nothing to export!", "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnExportActionPerformed
 
