@@ -17,11 +17,12 @@ public class ORFViewerGUI extends javax.swing.JDialog {
      * Creates new form ORFViewerGUI
      */
     
-    
+    //Start of variable declaration (seperate of gui variables)
     FileHandler f = new FileHandler();
     ORFPredictor o = new ORFPredictor();
     DataExporter e = new DataExporter();
     DataImporter i = new DataImporter();
+    //End of variable eclaration
     
     /**
      *
@@ -254,9 +255,14 @@ public class ORFViewerGUI extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * 
+     * @param evt 
+     * Action listener for btn "open". When this button is pressed the logic is called
+     * to read the file, predict ORF's en fill the header dropdown menu.
+     */
     private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
-        // TODO add your handling code here:
+       
         drpHeader.removeAll();
         ArrayList<String> fileContents = new ArrayList();
         fileContents = f.readFile(txtFilePath.getText());
@@ -265,7 +271,14 @@ public class ORFViewerGUI extends javax.swing.JDialog {
             drpHeader.addItem(s);
         }
     }//GEN-LAST:event_btnOpenActionPerformed
-
+    
+    /**
+     * 
+     * @param evt 
+     * even listener for the btn Visualize ORF. 
+     * When this button is pressed the selected ORF will be shown in the DNA text area.
+     * The DNA sequence will be translated to an AA sequence and this will be shown in the AA text area.
+     */
     private void btnVisualizeORFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizeORFActionPerformed
         // TODO add your handling code here:
         try{
@@ -290,7 +303,13 @@ public class ORFViewerGUI extends javax.swing.JDialog {
         }
         
     }//GEN-LAST:event_btnVisualizeORFActionPerformed
-
+    /**
+     * 
+     * @param evt 
+     * even listener for the btn Visualize seq. 
+     * When this button is pressed the sequence of the selected header will be shown in the DNA text area.
+     * The DNA sequence will be translated to an AA sequence and this will be shown in the AA text area.
+     */
     private void btnVisualizeSeqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizeSeqActionPerformed
         try {
             txtORFSequence.setText(o.getSequenceList().get(drpORF.getSelectedIndex()));
@@ -312,26 +331,43 @@ public class ORFViewerGUI extends javax.swing.JDialog {
                     JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnVisualizeSeqActionPerformed
-
+    /**
+     * 
+     * @param evt 
+     * Calls upon the method to open a Jfilechooser.
+     * When a file is chosen the filepath will be shown in the filepath text area.
+     */
     private void btnFileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileChooserActionPerformed
         // TODO add your handling code here:
         txtFilePath.setText(f.openFile());
     }//GEN-LAST:event_btnFileChooserActionPerformed
-
+    
+    /**
+     * 
+     * @param evt 
+     * Event listener for btn pick a header.
+     * This will pick a header and determine the ORF's of the corresponding DNA sequence.
+     * The ORF's will be added to the ORF dropdown menu.
+     */
     private void btnPickHeaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPickHeaderActionPerformed
         // TODO add your handling code here:
         try{
             drpORF.removeAllItems();
             o.visualizeORF(drpReadingFrame.getSelectedIndex()+1, drpHeader.getSelectedIndex());
             for(int i = 0; i < o.getORFs().size(); i++){
-                drpORF.addItem(Integer.toString(i+1));
+                drpORF.addItem(Integer.toString(i+1)); 
             }
         }catch(ArrayIndexOutOfBoundsException ex){
              JOptionPane.showMessageDialog(null, "First select a header from the dropdown menu!", "Error Message",
                     JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnPickHeaderActionPerformed
-
+    /**
+     * 
+     * @param evt 
+     * event listener for the btn Import.
+     * Will import data from the database based on a given project namen.
+     */
     private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
         // TODO add your handling code here:
         ArrayList<String> importedData = new ArrayList();
@@ -341,7 +377,13 @@ public class ORFViewerGUI extends javax.swing.JDialog {
             drpHeader.addItem(s);
         }
     }//GEN-LAST:event_btnImportActionPerformed
-
+    /**
+     * 
+     * @param evt 
+     * Event listener for btn Export.
+     * Will trigger the data export to the database. 
+     * It will ask for a project name as a reference. 
+     */
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
         // TODO add your handling code here:
         try {
