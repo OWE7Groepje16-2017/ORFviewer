@@ -1,11 +1,14 @@
 # ORFviewer
 ORF Finder informatica project course 7a
 
-Auteurs:  -Tim van de Kerkhof
-          -Jasper de Meijer
+Auteurs:  
+-Tim van de Kerkhof          
+-Jasper de Meijer
 
 Implementatie van het ontwerp:
+
   Database:
+  
     Ivm tijd en de complexiteit van het verbinden met de database en data ophalen/wegschrijven is er voor gekozen een versimpelde versie van de ontworpen database te maken. In deze versimpeld versie is normalisering buiten beschouwing gelaten.
     
   Per class:
@@ -29,4 +32,5 @@ Implementatie van het ontwerp:
 
 
 Known bugs:
-none
+
+          none
