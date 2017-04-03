@@ -142,6 +142,8 @@ public class ORFViewerGUI extends javax.swing.JDialog {
 
         jLabel5.setText("Select an open reading frame:");
 
+        txtProjectName.setText("DEFAULT");
+
         jLabel6.setText("Project name:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -292,6 +294,19 @@ public class ORFViewerGUI extends javax.swing.JDialog {
     private void btnVisualizeSeqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizeSeqActionPerformed
         try {
             txtORFSequence.setText(o.getSequenceList().get(drpORF.getSelectedIndex()));
+            String aminoAcid = "";
+            String aminoSeq = "";
+            String codon = "";
+            String seq = txtORFSequence.getText();
+            SequenceTranscriptor translate = new SequenceTranscriptor();
+
+            for (int i=0; i< seq.length() -2; i+=3){
+                codon = seq.substring(i, i+3);
+                aminoAcid = translate.getAminoAcidSequence(codon);
+                aminoSeq += aminoAcid;
+            }
+
+            txtAaSequence.setText(aminoSeq);
         }catch(ArrayIndexOutOfBoundsException ex){
              JOptionPane.showMessageDialog(null, "First pick a header!", "Error Message",
                     JOptionPane.ERROR_MESSAGE);
