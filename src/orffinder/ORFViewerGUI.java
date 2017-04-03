@@ -26,6 +26,7 @@ public class ORFViewerGUI extends javax.swing.JDialog {
     FileHandler f = new FileHandler();
     ORFPredictor o = new ORFPredictor();
     DataExporter e = new DataExporter();
+    DataImporter i = new DataImporter();
     
     public ORFViewerGUI(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -279,7 +280,6 @@ public class ORFViewerGUI extends javax.swing.JDialog {
             for (int i=0; i< seq.length() -2; i+=3){
                 codon = seq.substring(i, i+3);
                 aminoAcid = translate.getAminoAcidSequence(codon);
-                System.out.println(aminoAcid);
                 aminoSeq += aminoAcid;
             }
 
@@ -321,8 +321,12 @@ public class ORFViewerGUI extends javax.swing.JDialog {
 
     private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
         // TODO add your handling code here:
-        DataImporter test = new DataImporter();
-        test.importDatabase();
+        ArrayList<String> importedData = new ArrayList();
+        importedData = i.importData(txtProjectName.getText());
+        o.predictORF(importedData);
+        for(String s : o.getHeaderList()){
+            drpHeader.addItem(s);
+        }
     }//GEN-LAST:event_btnImportActionPerformed
 
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
