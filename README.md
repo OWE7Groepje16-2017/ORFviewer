@@ -1,6 +1,11 @@
 # ORFFinder
 ORF Finder informatica project course 7a
 
+  
+Auteurs:  
+-Tim van de Kerkhof          
+-Jasper de Meijer
+
 Functionaliteit ORFFinder:
 
     Het programma is in staat om een .FASTA bestands formaat in te laden met meerdere headers en DNA sequenties.
@@ -12,10 +17,7 @@ Functionaliteit ORFFinder:
   
     Het is mogelijk om de gevonden resultaten te exporteren naar een database. Deze database staat op de server: xirect.nl
     Het is ook mogelijk om opgeslagen resultaten op te halen uit de database en deze te visualiseren.
-  
-Auteurs:  
--Tim van de Kerkhof          
--Jasper de Meijer
+
 
 Implementatie van het ontwerp:
 
