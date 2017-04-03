@@ -7,6 +7,7 @@ Auteurs:  -Tim van de Kerkhof
 Implementatie van het ontwerp:
   Database:
     Ivm tijd en de complexiteit van het verbinden met de database en data ophalen/wegschrijven is er voor gekozen een versimpelde versie van de ontworpen database te maken. In deze versimpeld versie is normalisering buiten beschouwing gelaten.
+    
   Per class:
     FileHandler:
       FileHandler voldoet aan het ontwerp behalve het de inhoud van het bestand returned in een arraylist ipv een string. Dit is gedaan ivm de structuur van een fasta bestand die niet in stand viel te houden met behulp van een string en wel met een arraylist
