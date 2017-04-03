@@ -350,6 +350,8 @@ public class ORFViewerGUI extends javax.swing.JDialog {
             for(String s : o.getORFs()){
                 e.exportORF(e.getORFID()+1, s, drpReadingFrame.getSelectedItem().toString(), e.getSeqID());
             }
+            JOptionPane.showMessageDialog(null, "Export completed!", "Notification",
+                    JOptionPane.ERROR_MESSAGE);
         } catch(ArrayIndexOutOfBoundsException ex){
              JOptionPane.showMessageDialog(null, "There is nothing to export!", "Error Message",
                     JOptionPane.ERROR_MESSAGE);
