@@ -1,5 +1,7 @@
-# ORFviewer
+# ORFFinder
 ORF Finder informatica project course 7a
+
+Functionaliteit ORFFinder
 
 Auteurs:  
 -Tim van de Kerkhof          
