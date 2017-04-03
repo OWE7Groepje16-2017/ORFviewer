@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Jasper de Meijer
+ * Created on: 02-04-2017
  * Functionality: The class FileHandler makes it possible to select
  * a file from the filesystem of the user, open and read the file and return all
  * the lines of the file. 

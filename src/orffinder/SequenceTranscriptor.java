@@ -5,6 +5,7 @@ import java.util.HashMap;
 /**
  *
  * @author Jasper de Meijer
+ * @date 02-04-2017
  * When the class is called upon the constructor will initialize a HashMap 
  * containing an amino acid codon table. To translate a codon to an amino acid
  * use the getAminoAcidSequence(codon) function.
