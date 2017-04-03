@@ -25,6 +25,7 @@ public class ORFViewerGUI extends javax.swing.JDialog {
     
     FileHandler f = new FileHandler();
     ORFPredictor o = new ORFPredictor();
+    DataExporter e = new DataExporter();
     
     public ORFViewerGUI(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -62,7 +63,7 @@ public class ORFViewerGUI extends javax.swing.JDialog {
         btnPickHeader = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtProjectName = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -113,6 +114,11 @@ public class ORFViewerGUI extends javax.swing.JDialog {
         });
 
         btnExport.setText("Export project");
+        btnExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportActionPerformed(evt);
+            }
+        });
 
         txtAaSequence.setEditable(false);
         jScrollPane5.setViewportView(txtAaSequence);
@@ -135,7 +141,7 @@ public class ORFViewerGUI extends javax.swing.JDialog {
 
         jLabel5.setText("Select an open reading frame:");
 
-        jTextField1.setText("jTextField1");
+        txtProjectName.setText("jTextField1");
 
         jLabel6.setText("Project name:");
 
@@ -164,7 +170,7 @@ public class ORFViewerGUI extends javax.swing.JDialog {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane2)
-                                    .addComponent(jTextField1))
+                                    .addComponent(txtProjectName))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,7 +216,7 @@ public class ORFViewerGUI extends javax.swing.JDialog {
                         .addComponent(jLabel1)))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtProjectName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(btnImport)
                     .addComponent(btnExport))
@@ -319,6 +325,15 @@ public class ORFViewerGUI extends javax.swing.JDialog {
         test.importDatabase();
     }//GEN-LAST:event_btnImportActionPerformed
 
+    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
+        // TODO add your handling code here:
+        e.exportSequence(e.getSeqID()+1, o.getSequenceList().get(drpHeader.getSelectedIndex()), 
+                txtProjectName.getText(), "Not_Implemented", drpHeader.getSelectedItem().toString());
+        for(String s : o.getORFs()){
+            e.exportORF(e.getORFID()+1, s, drpReadingFrame.getSelectedItem().toString(), e.getSeqID());
+        }
+    }//GEN-LAST:event_btnExportActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -342,12 +357,11 @@ public class ORFViewerGUI extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtAaSequence;
     private javax.swing.JTextField txtFilePath;
     private javax.swing.JTextField txtORFSequence;
+    private javax.swing.JTextField txtProjectName;
     // End of variables declaration//GEN-END:variables
 }
